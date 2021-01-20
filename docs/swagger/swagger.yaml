@@ -1,0 +1,2241 @@
+basePath: /
+definitions:
+  handler.User:
+    properties:
+      id:
+        example: 1
+        type: integer
+      name:
+        example: account name
+        type: string
+      photo_urls:
+        example:
+        - http://test/image/1.jpg
+        - http://test/image/2.jpg
+        items:
+          type: string
+        type: array
+    type: object
+  handler.authToken:
+    properties:
+      jwt:
+        description: JWT token
+        example: wqeoifjweoifjwef.afoj3204jfdkjf0wjf0wefj0w9fjf...
+        type: string
+      user:
+        $ref: '#/definitions/user.User'
+        description: User auth data
+        type: object
+    type: object
+  handler.confirmation:
+    properties:
+      item:
+        $ref: '#/definitions/handler.confirmationMatch'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.confirmationMatch:
+    properties:
+      data:
+        $ref: '#/definitions/user.Match'
+        type: object
+    type: object
+  handler.createAddress:
+    properties:
+      description:
+        type: string
+      location:
+        type: string
+    type: object
+  handler.createBank:
+    properties:
+      account:
+        type: string
+      agency:
+        type: string
+      bank:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  handler.dataer:
+    type: object
+  handler.detailError:
+    properties:
+      domain:
+        type: string
+      extendedHelp:
+        type: string
+      location:
+        type: string
+      locationType:
+        type: string
+      message:
+        type: string
+      reason:
+        type: string
+      sendReport:
+        type: string
+    type: object
+  handler.doctOut:
+    properties:
+      item:
+        $ref: '#/definitions/user.Doctor'
+        type: object
+      kind:
+        example: Doctor
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.errorResponse:
+    properties:
+      error:
+        $ref: '#/definitions/handler.generalError'
+        type: object
+    type: object
+  handler.formCard:
+    properties:
+      crcaID:
+        type: string
+      patiID:
+        type: string
+      token:
+        type: string
+    type: object
+  handler.formDoctor:
+    properties:
+      crm:
+        type: string
+      documents:
+        type: string
+      email:
+        type: string
+      info:
+        $ref: '#/definitions/user.Info'
+        type: object
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  handler.formMatch:
+    properties:
+      date:
+        example: "1202020"
+        type: string
+      distance:
+        example: 10
+        type: integer
+      location:
+        example: -45.0000, 45.0000
+        type: string
+      price:
+        example: 8000
+        type: integer
+      schedule:
+        example: 9:00-12:00
+        type: string
+      specID:
+        example: 3344-3434-34344-3433443
+        type: string
+    type: object
+  handler.formMatchConf:
+    properties:
+      date:
+        type: string
+      doctID:
+        example: 3344-3434-34344-3433443
+        type: string
+      matcID:
+        example: 3344-3434-34344-3433443
+        type: string
+      patiID:
+        example: 3344-3434-34344-3433443
+        type: string
+      price:
+        type: integer
+      procID:
+        example: 3344-3434-34344-3433443
+        type: string
+      sescID:
+        example: 3344-3434-34344-3433443
+        type: string
+      specID:
+        example: 3344-3434-34344-3433443
+        type: string
+      time:
+        type: string
+      type:
+        type: string
+    type: object
+  handler.formPatient:
+    properties:
+      address:
+        type: string
+      cpf:
+        type: string
+      documents:
+        type: string
+      email:
+        type: string
+      info:
+        $ref: '#/definitions/user.Info'
+        type: object
+      name:
+        type: string
+      password:
+        type: string
+      rg:
+        type: string
+    type: object
+  handler.formResponse:
+    properties:
+      item:
+        $ref: '#/definitions/handler.response'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.formServiceAdd:
+    properties:
+      addrID:
+        type: integer
+      name:
+        type: string
+      priceMin:
+        type: integer
+      specID:
+        type: string
+      type:
+        type: string
+    type: object
+  handler.formSpecAdd:
+    properties:
+      spec_id:
+        type: string
+    type: object
+  handler.generalError:
+    properties:
+      code:
+        type: integer
+      errors:
+        items:
+          $ref: '#/definitions/handler.detailError'
+        type: array
+      message:
+        type: string
+    type: object
+  handler.getResponse:
+    properties:
+      item:
+        $ref: '#/definitions/handler.responseGet'
+        type: object
+      kind:
+        example: Patient
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.listAddresses:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        $ref: '#/definitions/user.Addresses'
+        type: object
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listProceduresRsp:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        $ref: '#/definitions/support.Procedures'
+        type: object
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        example: procedures
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        description: The total number of items available in this set
+        example: 100
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listResponse:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/user.MatchHistory'
+        type: array
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        description: The total number of items available in this set
+        example: 100
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listServices:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        $ref: '#/definitions/user.Services'
+        type: object
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listSpecResponse:
+    properties:
+      context:
+        description: Client sets this value and server echos data in the response
+        type: string
+      data:
+        $ref: '#/definitions/handler.listSpecializations'
+        type: object
+    type: object
+  handler.listSpecRsp:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        $ref: '#/definitions/support.Specializations'
+        type: object
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        example: specializations
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        description: The total number of items available in this set
+        example: 100
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listSpecializations:
+    properties:
+      currentItemCount:
+        description: The number of items in this result set
+        example: 1
+        type: integer
+      items:
+        $ref: '#/definitions/user.Specializations'
+        type: object
+      itemsPerPage:
+        description: The number of items in the result
+        example: 10
+        type: integer
+      kind:
+        example: specializations
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+      pageIndex:
+        description: The index of the current page of items
+        example: 1
+        type: integer
+      startIndex:
+        description: The index of the first item in data.items
+        example: 1
+        type: integer
+      totalItems:
+        type: integer
+      totalPages:
+        description: The total number of pages in the result set.
+        example: 10
+        type: integer
+    type: object
+  handler.listSupportSpecResponse:
+    properties:
+      context:
+        description: Client sets this value and server echos data in the response
+        type: string
+      data:
+        $ref: '#/definitions/handler.listSpecRsp'
+        type: object
+    type: object
+  handler.loginForm:
+    properties:
+      email:
+        example: user@mail.com
+        type: string
+      password:
+        example: mypassword123
+        type: string
+    type: object
+  handler.loginOut:
+    properties:
+      item:
+        $ref: '#/definitions/handler.authToken'
+        type: object
+      kind:
+        example: authToken
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.matchListResponse:
+    properties:
+      context:
+        description: Client sets this value and server echos data in the response
+        type: string
+      data:
+        $ref: '#/definitions/handler.listResponse'
+        type: object
+    type: object
+  handler.mktPrice:
+    properties:
+      item:
+        $ref: '#/definitions/support.MarketPrice'
+        type: object
+      kind:
+        example: marketPrice
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.removeAddress:
+    properties:
+      addrID:
+        type: integer
+    type: object
+  handler.response:
+    properties:
+      jwt:
+        example: wqeoifjweoifjwef.afoj3204jfdkjf0wjf0wefj0w9fjf...
+        type: string
+      user:
+        $ref: '#/definitions/user.Patient'
+        type: object
+    type: object
+  handler.responseGet:
+    properties:
+      user:
+        $ref: '#/definitions/user.Patient'
+        type: object
+    type: object
+  handler.singleAddress:
+    properties:
+      item:
+        $ref: '#/definitions/user.Address'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.singleBank:
+    properties:
+      item:
+        $ref: '#/definitions/user.Bank'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.singleCard:
+    properties:
+      item:
+        $ref: '#/definitions/user.CreditCard'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.singleMatch:
+    properties:
+      item:
+        $ref: '#/definitions/user.RetMatch'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.singleService:
+    properties:
+      item:
+        $ref: '#/definitions/user.Service'
+        type: object
+      kind:
+        type: string
+      lang:
+        description: Indicates the language of the rest of the properties in this
+          object (BCP 47)
+        example: pt-br
+        type: string
+    type: object
+  handler.textResponse:
+    properties:
+      response:
+        type: string
+    type: object
+  support.MarketPrice:
+    properties:
+      price_max:
+        type: integer
+      price_min:
+        type: integer
+      type:
+        type: string
+    type: object
+  support.Procedures:
+    type: object
+  support.Specializations:
+    type: object
+  user.Address:
+    properties:
+      addrID:
+        type: integer
+      description:
+        type: string
+      doctID:
+        type: string
+      location:
+        type: string
+    type: object
+  user.Addresses:
+    type: object
+  user.Bank:
+    properties:
+      account:
+        type: string
+      agency:
+        type: string
+      bank:
+        type: string
+      bankID:
+        type: string
+      doctID:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  user.CreditCard:
+    properties:
+      brand:
+        type: string
+      crcaID:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      patiID:
+        type: string
+      token:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  user.Doctor:
+    properties:
+      createdAt:
+        type: string
+      crm:
+        type: string
+      deletedAt:
+        type: string
+      doctID:
+        type: string
+      documents:
+        type: string
+      email:
+        type: string
+      info:
+        $ref: '#/definitions/user.Info'
+        type: object
+      name:
+        type: string
+      role:
+        $ref: '#/definitions/user.Role'
+        type: object
+      userID:
+        type: string
+    type: object
+  user.Info:
+    properties:
+      birthdate:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+    type: object
+  user.Match:
+    properties:
+      canceledAt:
+        type: string
+      createdAt:
+        type: string
+      date:
+        type: string
+      deletedAt:
+        type: string
+      doctID:
+        type: string
+      matcID:
+        type: string
+      patiID:
+        type: string
+      price:
+        type: integer
+      procID:
+        type: string
+      sescID:
+        type: string
+      specID:
+        type: string
+      time:
+        type: string
+      type:
+        type: string
+    type: object
+  user.MatchHistory:
+    properties:
+      createdAt:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      doctor:
+        type: string
+      location:
+        type: string
+      matcID:
+        type: string
+      price:
+        type: integer
+      time:
+        type: string
+      type:
+        type: string
+    type: object
+  user.Patient:
+    properties:
+      address:
+        type: string
+      cpf:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      documents:
+        type: string
+      email:
+        type: string
+      info:
+        $ref: '#/definitions/user.Info'
+        type: object
+      name:
+        type: string
+      patiID:
+        type: string
+      rg:
+        type: string
+      role:
+        $ref: '#/definitions/user.Role'
+        type: object
+      userID:
+        type: string
+    type: object
+  user.RetMatch:
+    properties:
+      address:
+        type: string
+      canceledAt:
+        type: string
+      createdAt:
+        type: string
+      date:
+        type: string
+      deletedAt:
+        type: string
+      doctID:
+        type: string
+      location:
+        type: string
+      matcID:
+        type: string
+      patiID:
+        type: string
+      price:
+        type: integer
+      procID:
+        type: string
+      servID:
+        type: string
+      sescID:
+        type: string
+      specID:
+        type: string
+      time:
+        type: string
+      type:
+        type: string
+    type: object
+  user.Role:
+    type: object
+  user.Service:
+    properties:
+      addrID:
+        type: integer
+      createdAt:
+        type: string
+      doctID:
+        type: string
+      name:
+        type: string
+      priceMin:
+        type: integer
+      servID:
+        type: string
+      specID:
+        type: string
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  user.Services:
+    type: object
+  user.Specializations:
+    type: object
+  user.User:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      info:
+        $ref: '#/definitions/user.Info'
+        type: object
+      role:
+        $ref: '#/definitions/user.Role'
+        type: object
+      userID:
+        type: string
+    type: object
+host: 192.168.1.41:1323
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server Petstore server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/list/match:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of Match service
+      parameters:
+      - description: filter by start date
+        format: date
+        in: query
+        name: dateStart
+        required: true
+        type: string
+      - description: filter by end date
+        format: date
+        in: query
+        name: dateEnd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.matchListResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Match.List
+  /api/matchmaker/confirm:
+    post:
+      consumes:
+      - application/json
+      description: Confirm a Match service
+      parameters:
+      - description: Return match confirmation
+        in: body
+        name: match
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formMatchConf'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.confirmation'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Match.Confirm
+  /api/matchmaker/match:
+    get:
+      consumes:
+      - application/json
+      description: Return Match service
+      parameters:
+      - description: Return match service
+        in: body
+        name: match
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formMatch'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleMatch'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Match.Get
+  /doctors:
+    post:
+      consumes:
+      - application/json
+      description: Login with email & password
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Email to login with
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handler.loginForm'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.loginOut'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: auth.login
+  /doctors/{doct_id}:
+    get:
+      consumes:
+      - application/json
+      description: Return Doctor data from doctor ID
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.doctOut'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Doctor.Get
+    put:
+      consumes:
+      - application/json
+      description: Update Doctor data
+      parameters:
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Doctor
+        in: body
+        name: Doctor
+        required: true
+        schema:
+          $ref: '#/definitions/user.Doctor'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.doctOut'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Doctor.Update
+  /doctors/{doct_id}/addresses:
+    put:
+      consumes:
+      - application/json
+      description: Remove doctor address
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Remove address
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handler.removeAddress'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.textResponse'
+            type: object
+      summary: Address.Remove
+  /doctors/{doct_id}/addresses/:
+    get:
+      consumes:
+      - application/json
+      description: Return a list of doctor address
+      parameters:
+      - description: Doctor id
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.listAddresses'
+            type: object
+      summary: Address.List
+    post:
+      consumes:
+      - application/json
+      description: Create doctor address
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Create new address
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handler.createAddress'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleAddress'
+            type: object
+      summary: Address.Create
+  /doctors/{doct_id}/bank:
+    get:
+      consumes:
+      - application/json
+      description: Bank get data
+      parameters:
+      - description: Doctor id
+        in: path
+        name: doct_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleBank'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Bank.Get
+    post:
+      consumes:
+      - application/json
+      description: Bank create with bank account data
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Bank data
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handler.createBank'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleBank'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Bank.Create
+    put:
+      consumes:
+      - application/json
+      description: Update bank data
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Bank data
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/user.Bank'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleBank'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Bank.Update
+  /doctors/{doct_id}/services/:
+    get:
+      consumes:
+      - application/json
+      description: Return doctor services
+      parameters:
+      - description: Return service from id
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.listServices'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Services.List
+    post:
+      consumes:
+      - application/json
+      description: Add doctor service
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Doctor id
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Email to login with
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formServiceAdd'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleService'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Service.Add
+  /doctors/{doct_id}/services/{serv_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove doctor service
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Service ID
+        format: uuid
+        in: path
+        name: serv_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleService'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Service.Remove
+    get:
+      consumes:
+      - application/json
+      description: Get doctor service
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Return service from id
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Return service from id
+        in: path
+        name: serv_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleService'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Service.Get
+    put:
+      consumes:
+      - application/json
+      description: Update doctor service
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Return service from id
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Return service from id
+        in: path
+        name: serv_id
+        required: true
+        type: string
+      - description: Email to login with
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/user.Service'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleService'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Service.Update
+  /doctors/{doct_id}/specializations/:
+    get:
+      consumes:
+      - application/json
+      description: Return doctor specializations
+      parameters:
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.listSpecResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Specializations.List
+    post:
+      consumes:
+      - application/json
+      description: Add doctor specialization
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Add new specialization
+        in: body
+        name: specialization
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formSpecAdd'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.textResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Specialization.Add
+    put:
+      consumes:
+      - application/json
+      description: Remove doctor specialization
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Doctor ID
+        format: uuid
+        in: path
+        name: doct_id
+        required: true
+        type: string
+      - description: Add new specialization
+        in: body
+        name: specialization
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formSpecAdd'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.textResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Specialization.Remove
+  /market_price/procedure/{proc_id}:
+    get:
+      consumes:
+      - application/json
+      description: Return market price for given procedure
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Procedure ID
+        format: uuid
+        in: path
+        name: proc_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.mktPrice'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Market price procedure.Get
+  /market_price/specialization/{spec_id}:
+    get:
+      consumes:
+      - application/json
+      description: Return a market price for specialization
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Specialization ID
+        format: uuid
+        in: path
+        name: spec_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.mktPrice'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Market price specialization.Get
+  /onboarding/doctor:
+    post:
+      consumes:
+      - application/json
+      description: Create a new Doctor user
+      parameters:
+      - description: Doctor
+        in: body
+        name: Doctor
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formDoctor'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.doctOut'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Doctor.Create
+  /onboarding/patient:
+    post:
+      consumes:
+      - application/json
+      description: Create a new Patient user
+      parameters:
+      - description: Doctor
+        in: body
+        name: Doctor
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formPatient'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.formResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Patient.Create
+  /patients/{pati_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get patient data
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.getResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Patient.Get
+    put:
+      consumes:
+      - application/json
+      description: Patient update with patient data
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      - description: Update patient data
+        in: body
+        name: patient
+        required: true
+        schema:
+          $ref: '#/definitions/user.Patient'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.getResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Patient.Update
+  /patients/{pati_id}/payment-methods/creditcards:
+    post:
+      consumes:
+      - application/json
+      description: Credit card create with credit card data
+      parameters:
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      - description: Credit Card data
+        in: body
+        name: card
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formCard'
+          type: object
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.CreditCard'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: CreditCard.Create
+  /patients/{pati_id}/payment-methods/creditcards/{crca_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Credit card create with credit card data
+      parameters:
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      - description: Credit Card ID
+        format: uuid
+        in: path
+        name: crca_id
+        required: true
+        type: string
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleCard'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: CreditCard.SoftDelete
+    get:
+      consumes:
+      - application/json
+      description: Credit card get
+      parameters:
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      - description: Credit Card ID
+        format: uuid
+        in: path
+        name: crca_id
+        required: true
+        type: string
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleCard'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: CreditCard.Get
+    put:
+      consumes:
+      - application/json
+      description: credit card signup with credit card data
+      parameters:
+      - description: Patient ID
+        format: uuid
+        in: path
+        name: pati_id
+        required: true
+        type: string
+      - description: Credit Card ID
+        format: uuid
+        in: path
+        name: crca_id
+        required: true
+        type: string
+      - description: Credit Card data
+        in: body
+        name: card
+        required: true
+        schema:
+          $ref: '#/definitions/handler.formCard'
+          type: object
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.singleCard'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: CreditCard.Update
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: User signup with email & password
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.User'
+            type: object
+      summary: Signup to service
+  /signup/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      operationId: get-string-by-int
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.User'
+            type: object
+      summary: Show a account
+  /specializations:
+    get:
+      consumes:
+      - application/json
+      description: List all specializations
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Filter like name
+        in: query
+        name: name
+        type: string
+      - default: 1
+        description: Page to return
+        in: query
+        name: page
+        type: integer
+      - default: 50
+        description: Amount of results returned per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.listSupportSpecResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Specializations.List
+  /specializations/{spec_id}/procedures:
+    get:
+      consumes:
+      - application/json
+      description: List all procedures for a given specialization
+      parameters:
+      - description: Context to return
+        in: query
+        name: context
+        type: string
+      - description: Specialization ID
+        format: uuid
+        in: path
+        name: spec_id
+        required: true
+        type: string
+      - description: Filter like name
+        in: query
+        name: name
+        type: string
+      - default: 1
+        description: Page to return
+        in: query
+        name: page
+        type: integer
+      - default: 50
+        description: Amount of results returned per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.listProceduresRsp'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+            type: object
+      summary: Procedures.List
+swagger: "2.0"

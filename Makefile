@@ -1,0 +1,2 @@
+mod:
+	-go mod init
